@@ -1,18 +1,65 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class PlayerFSM : MonoBehaviour
+
+public abstract class PlayerBaseState : BaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    protected PlayerController controller;
+    protected PlayerBaseState(PlayerController mono)
     {
-        
+        controller = mono;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+
+
+public class PlayerFSM : BaseFSM
+{
+    private PlayerController controller;
+    public PlayerFSM(PlayerController mono)
+    {
+        controller = mono;
+        currentState = new IdleState(mono);
+
+    }
+
+    public class IdleState : PlayerBaseState
+    {
+        public IdleState(PlayerController mono) : base(mono)
+        {
+            this.controller = mono;
+            EnterState();
+        }
+        public override void EnterState()
+        {
+
+        }
+        public override void HandleUpdate()
+        {
+
+        }
+        public override void HandleFixedUpdate()
+        {
+
+        }
+        public override void ExitState()
+        {
+
+        }
+        public override void HandleCollide2D(Collision2D collision)
+        {
+
+        }
+
+        public override void HandleTrigger2D(Collider2D collider)
+        {
+
+        }
+    }
+
+}
+
+
