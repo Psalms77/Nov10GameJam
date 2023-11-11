@@ -22,7 +22,7 @@ public class GameManagerFSM : BaseFSM
     public GameManagerFSM(GameManager mono)
     {
         controller = mono;
-        currentState = new MenuState(mono);
+        currentState = new PlanetState(mono);
 
     }
 
@@ -69,7 +69,9 @@ public class GameManagerFSM : BaseFSM
         }
         public override void EnterState()
         {
-
+            // camera 
+            // player
+            // sound
         }
         public override void HandleUpdate()
         {

@@ -6,6 +6,7 @@ public class Planet : MonoBehaviour
 {
     public GameObject player;
     public Rigidbody2D playerRb;
+    public float gravityScale;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,6 @@ public class Planet : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 t = - player.transform.position + this.gameObject.transform.position;
-        playerRb.AddForce(t.normalized * 5f);
-        //Debug.Log("aa");
+        playerRb.AddForce(t.normalized * gravityScale);
     }
 }

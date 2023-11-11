@@ -8,6 +8,9 @@ public class GameManager : Singleton<GameManager>
 {
 
     private GameManagerFSM statemachine;
+    public Camera cam;
+    // mouse pointing
+    public Vector2 mousePos;
     protected override void Awake()
     {
         base.Awake();
@@ -15,6 +18,7 @@ public class GameManager : Singleton<GameManager>
         //DontDestroyOnLoad(GameObject.Find("Canvas"));
         //DontDestroyOnLoad(GameObject.Find("Camera"));
         Application.targetFrameRate = 120;
+        cam = Camera.main;
     }
 
     // Start is called before the first frame update
@@ -26,7 +30,8 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Debug.Log("aaa");
     }
 
     public GameObject GetPlayer()

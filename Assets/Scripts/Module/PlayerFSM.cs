@@ -39,7 +39,8 @@ public class PlayerFSM : BaseFSM
         }
         public override void HandleUpdate()
         {
-
+            controller.MoveOnPlanet();
+            controller.JumpOnPlanet();
         }
         public override void HandleFixedUpdate()
         {
