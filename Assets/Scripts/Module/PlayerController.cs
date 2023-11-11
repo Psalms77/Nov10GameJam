@@ -9,9 +9,9 @@ public class PlayerController : Observer
 
     public PlayerFSM stateMachine;
     public GameObject planet;
-
+    public LineRenderer laserLineRenderer;
     public Rigidbody2D rb;
-    public float moveSpeed;
+    public float moveSpeed = 1f;
 
     private void Awake()
     {
@@ -32,11 +32,14 @@ public class PlayerController : Observer
         Vector2 t = -planet.transform.position + this.gameObject.transform.position;
         
         if (Input.GetKey(KeyCode.D)) {
-            rb.velocity = t.Perpendicular1().normalized;
+            rb.velocity = t.Perpendicular1().normalized * moveSpeed;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.velocity = t.Perpendicular2().normalized;
+            rb.velocity = t.Perpendicular2().normalized * moveSpeed;
         }
+
+
+
     }
 }

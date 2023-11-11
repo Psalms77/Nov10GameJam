@@ -23,6 +23,6 @@ public class Planet : MonoBehaviour
     {
         Vector3 t = - player.transform.position + this.gameObject.transform.position;
         playerRb.AddForce(t.normalized * 5f);
-        Debug.Log("aa");
+        //Debug.Log("aa");
     }
 }

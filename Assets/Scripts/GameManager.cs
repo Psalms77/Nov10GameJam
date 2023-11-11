@@ -6,12 +6,14 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+
+    private GameManagerFSM statemachine;
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
         //DontDestroyOnLoad(GameObject.Find("Canvas"));
-        //DontDestroyOnLoad(GameObject.Find("UICamera"));
+        //DontDestroyOnLoad(GameObject.Find("Camera"));
         Application.targetFrameRate = 120;
     }
 
