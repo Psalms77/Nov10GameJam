@@ -266,7 +266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &519901531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +335,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   planet: {fileID: 0}
   mousePos: {x: 0, y: 0}
+  gravity: {x: 0, y: 0}
 --- !u!4 &536798853
 Transform:
   m_ObjectHideFlags: 0
@@ -869,6 +870,100 @@ Transform:
   - {fileID: 1119866597}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1629428484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629428485}
+  - component: {fileID: 1629428486}
+  m_Layer: 0
+  m_Name: atmos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1629428485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629428484}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.007, y: 0.634, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1963269608}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1629428486
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629428484}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 2
+  m_Points:
+  - {x: 0.70125395, y: -0.42061725}
+  - {x: 0.7095427, y: -0.50541025}
+  - {x: 0.68353873, y: -0.60024697}
+  - {x: 0.69588226, y: -0.6953613}
+  - {x: 0.65005493, y: -0.9397704}
+  - {x: 0.51069075, y: -1.0925082}
+  - {x: 0.26207224, y: -1.2360218}
+  - {x: 0.09580906, y: -1.2816353}
+  - {x: -0.11077279, y: -1.2671968}
+  - {x: -0.47052887, y: -1.12223}
+  - {x: -0.65554965, y: -0.8978308}
+  - {x: -0.6691164, y: -0.68469536}
+  - {x: -0.68062216, y: -0.51806074}
+  - {x: -0.61654615, y: -0.32409254}
+  - {x: -0.5674577, y: -0.21511088}
+  - {x: -0.35829058, y: -0.045587853}
+  - {x: -0.1913353, y: 0.017818615}
+  - {x: 0.0053312844, y: 0.04071545}
+  - {x: 0.3508856, y: -0.028683126}
+  - {x: 0.4870933, y: -0.08233251}
+  - {x: 0.612148, y: -0.1983638}
+  - {x: 0.68533814, y: -0.29198685}
+  - {x: 0.70161146, y: -0.42343947}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1667795057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,6 +1217,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 871208030}
+  - {fileID: 1629428485}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1963269609
@@ -1174,6 +1270,8 @@ MonoBehaviour:
   player: {fileID: 1095502777}
   playerRb: {fileID: 0}
   gravityScale: 7
+  gravityRadius: 0
+  onPlanetStuff: []
 --- !u!1 &1978356656
 GameObject:
   m_ObjectHideFlags: 0

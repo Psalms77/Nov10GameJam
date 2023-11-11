@@ -34,7 +34,10 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            EventManager.SendNotification(EventName.SwitchGameMode);
+        }
     }
 
     public GameObject GetPlayer()

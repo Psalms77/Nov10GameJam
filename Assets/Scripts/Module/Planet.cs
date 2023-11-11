@@ -2,11 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Planet : MonoBehaviour
+public class Planet : Observer
 {
     public GameObject player;
     public Rigidbody2D playerRb;
     public float gravityScale;
+    private bool gravityOn = true;
+    public float gravityRadius;
+
+    public Collider2D[] onPlanetStuff;
+
+    private void Awake()
+    {
+        AddEventListener(EventName.SwitchGameMode, (object[] arg) =>
+        {
+            
+        });
+    }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +36,46 @@ public class Planet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (gravityOn) { PerformGravity(); }
+        else if(!gravityOn)
+        {
+            TurnOffGravity();
+        }
+
+    }
+
+    public void PerformGravity()
+    {        
+        
+
+
+        onPlanetStuff = Physics2D.OverlapCircleAll(transform.position, gravityRadius);
+        for (int i = 0; i < onPlanetStuff.Length; i++)
+        {
+            if (onPlanetStuff[i].gameObject.GetComponent<Rigidbody2D>() == null)
+            {
+                return;
+            }
+            else
+            {
+                onPlanetStuff[i].transform.gameObject.GetComponent<Rigidbody2D>().AddForce(onPlanetStuff[i].transform.position.normalized * gravityScale);
+            }
+            
+        }
+
         Vector3 t = - player.transform.position + this.gameObject.transform.position;
         playerRb.AddForce(t.normalized * gravityScale);
     }
+
+
+    void TurnOffGravity()
+    {
+
+    }
+
+
+
+
+
+
 }
