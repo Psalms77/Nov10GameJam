@@ -17,6 +17,7 @@ public class Planet : Observer
         AddEventListener(EventName.SwitchGameMode, (object[] arg) =>
         {
             
+            TurnOffGravity();
         });
     }
 

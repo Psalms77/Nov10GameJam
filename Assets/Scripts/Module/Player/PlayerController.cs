@@ -6,7 +6,10 @@ using Unity.VisualScripting;
 
 public class PlayerController : Observer
 {
-
+    public float hp = 100f;
+    public float dmg;
+    public float flybackTime = 0.5f;
+    public float flybackMultiplier = 1f;
     public PlayerFSM stateMachine;
     public GameObject planet;
     public LineRenderer laserLineRenderer;
@@ -14,11 +17,17 @@ public class PlayerController : Observer
     public float moveSpeed = 1f;
     public float jumpParam = 1f;
     private Vector2 gravity;
-    private Vector2 t;
+    private SpriteRenderer _sr;
+
+
     private void Awake()
     {
         stateMachine = new PlayerFSM(this);
-        
+        AddEventListener(EventName.PlayerTakesDmg, (object[] arg) =>
+        {
+            TakeDamage((float)arg[0], (GameObject)arg[1]);
+        });
+
     }
 
 
@@ -38,7 +47,6 @@ public class PlayerController : Observer
         //ShootingLaser();
         transform.up = gravity;
         stateMachine.currentState.HandleUpdate();
-
     }
 
 
@@ -90,6 +98,19 @@ public class PlayerController : Observer
     {
         laserLineRenderer.SetPosition(0, startPos);
         laserLineRenderer.SetPosition(1, endPos);
+    }
+
+
+    public void TakeDamage(float dmg, GameObject damageSource)
+    {
+        DOTween.Kill("flyback");
+        hp = hp - dmg;
+        Vector3 flybackDir = - damageSource.transform.position + this.transform.position;
+        this.transform.DOMove(this.transform.position + flybackDir *flybackMultiplier, flybackTime).SetEase(Ease.OutCubic).SetId("flyback");
+
+
+
+
     }
 
 }

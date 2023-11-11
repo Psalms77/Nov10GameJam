@@ -38,6 +38,12 @@ public class GameManager : Singleton<GameManager>
         {
             EventManager.SendNotification(EventName.SwitchGameMode);
         }
+
+        if (Input.GetKey(KeyCode.M))
+        {
+
+        }
+
     }
 
     public GameObject GetPlayer()
@@ -57,6 +63,10 @@ public class GameManager : Singleton<GameManager>
         go.transform.up = gravity;
     }
 
+    public void ZoomMap()
+    {
 
+
+    }
 
 }
