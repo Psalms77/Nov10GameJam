@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 
 public class PlayerController : Observer
 {
+    public float hp = 100f;
+    public float dmg;
 
     public PlayerFSM stateMachine;
     public GameObject planet;
@@ -14,7 +16,9 @@ public class PlayerController : Observer
     public float moveSpeed = 1f;
     public float jumpParam = 1f;
     private Vector2 gravity;
-    private Vector2 t;
+
+
+
     private void Awake()
     {
         stateMachine = new PlayerFSM(this);
