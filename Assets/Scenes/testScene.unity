@@ -1270,7 +1270,7 @@ MonoBehaviour:
   player: {fileID: 1095502777}
   playerRb: {fileID: 0}
   gravityScale: 7
-  gravityRadius: 0
+  gravityRadius: 50
   onPlanetStuff: []
 --- !u!1 &1978356656
 GameObject:

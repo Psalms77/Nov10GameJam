@@ -52,19 +52,17 @@ public class Planet : Observer
         onPlanetStuff = Physics2D.OverlapCircleAll(transform.position, gravityRadius);
         for (int i = 0; i < onPlanetStuff.Length; i++)
         {
-            if (onPlanetStuff[i].gameObject.GetComponent<Rigidbody2D>() == null)
+            if(onPlanetStuff[i].gameObject.GetComponent<Rigidbody2D>() && (onPlanetStuff[i].gameObject.CompareTag("Player") || onPlanetStuff[i].gameObject.CompareTag("Enemy")))
             {
-                return;
-            }
-            else
-            {
-                onPlanetStuff[i].transform.gameObject.GetComponent<Rigidbody2D>().AddForce(onPlanetStuff[i].transform.position.normalized * gravityScale);
+                //Debug.Log("aaaaa");
+                Vector3 gravity = -onPlanetStuff[i].transform.position +this.gameObject.transform.position;
+                onPlanetStuff[i].transform.gameObject.GetComponent<Rigidbody2D>().AddForce(gravity.normalized * gravityScale);
             }
             
         }
 
-        Vector3 t = - player.transform.position + this.gameObject.transform.position;
-        playerRb.AddForce(t.normalized * gravityScale);
+        //Vector3 t = - player.transform.position + this.gameObject.transform.position;
+        //playerRb.AddForce(t.normalized * gravityScale);
     }
 
 
@@ -76,6 +74,14 @@ public class Planet : Observer
 
 
 
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, gravityRadius);
+    }
+
+#endif
 
 
 }

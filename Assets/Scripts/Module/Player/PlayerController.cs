@@ -34,7 +34,7 @@ public class PlayerController : Observer
     void Update()
     {
         gravity = -planet.transform.position + this.gameObject.transform.position;
-        Debug.Log(GameManager.instance.mousePos);
+        //Debug.Log(GameManager.instance.mousePos);
         //ShootingLaser();
         transform.up = gravity;
         stateMachine.currentState.HandleUpdate();
