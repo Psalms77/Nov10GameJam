@@ -9,16 +9,19 @@ public class GameManager : Singleton<GameManager>
 
     private GameManagerFSM statemachine;
     public Camera cam;
+    public GameObject planet;
     // mouse pointing
     public Vector2 mousePos;
+    private Vector2 gravity;
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
-        //DontDestroyOnLoad(GameObject.Find("Canvas"));
+        
         //DontDestroyOnLoad(GameObject.Find("Camera"));
         Application.targetFrameRate = 120;
         cam = Camera.main;
+        planet = GameObject.Find("Planet");
     }
 
     // Start is called before the first frame update
@@ -31,7 +34,7 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log("aaa");
+        
     }
 
     public GameObject GetPlayer()
@@ -39,7 +42,17 @@ public class GameManager : Singleton<GameManager>
         return GameObject.FindGameObjectWithTag("Player");
     }
 
-
+    // call every frame
+    public Vector2 GetGravity(Vector3 objectPosition)
+    {
+        gravity = -planet.transform.position + objectPosition;
+        return gravity;
+    }
+    // call every frame
+    public void SetFacingOnPlant(GameObject go)
+    {
+        go.transform.up = gravity;
+    }
 
 
 

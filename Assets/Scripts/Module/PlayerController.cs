@@ -14,6 +14,7 @@ public class PlayerController : Observer
     public float moveSpeed = 1f;
     public float jumpParam = 1f;
     private Vector2 gravity;
+    private Vector2 t;
     private void Awake()
     {
         stateMachine = new PlayerFSM(this);
@@ -34,8 +35,8 @@ public class PlayerController : Observer
     {
         gravity = -planet.transform.position + this.gameObject.transform.position;
         Debug.Log(GameManager.instance.mousePos);
-        ShootingLaser();
-
+        //ShootingLaser();
+        transform.up = gravity;
         stateMachine.currentState.HandleUpdate();
 
     }
@@ -72,6 +73,7 @@ public class PlayerController : Observer
             laserLineRenderer.SetColors(new Color(255, 255, 0, 0.5f), end: new Color(255, 255, 0, 0.5f));
             laserLineRenderer.SetWidth(0.2f, 0.2f);
             DrawLaser(this.gameObject.transform.position, (GameManager.instance.mousePos));
+
         }
 
         if (!Input.GetMouseButton(0))

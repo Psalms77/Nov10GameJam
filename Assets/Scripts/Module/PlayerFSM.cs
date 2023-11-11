@@ -41,6 +41,7 @@ public class PlayerFSM : BaseFSM
         {
             controller.MoveOnPlanet();
             controller.JumpOnPlanet();
+            controller.ShootingLaser();
         }
         public override void HandleFixedUpdate()
         {
