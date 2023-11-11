@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject planet;
     // mouse pointing
     public Vector2 mousePos;
-    private Vector2 gravity;
+    public Vector2 gravity;
     protected override void Awake()
     {
         base.Awake();
