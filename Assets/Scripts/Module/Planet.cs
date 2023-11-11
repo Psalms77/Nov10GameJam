@@ -18,7 +18,7 @@ public class Planet : MonoBehaviour
     void Update()
     {
         
-    }
+    }   
 
     private void FixedUpdate()
     {
