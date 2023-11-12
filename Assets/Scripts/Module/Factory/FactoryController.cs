@@ -7,7 +7,8 @@ public class FactoryController : Observer
     public GameObject upgradePrefab;
     public GameObject pollutionPrefab;
 
-
+    public Transform pollutionPoint;
+    public Transform upgradePoint;
     private float spawnUpgradeTimer;
     public float spawnUpgradeTime;
     private float spawnPollutionTimer;
@@ -38,8 +39,8 @@ public class FactoryController : Observer
         }
         else if (spawnUpgradeTimer >= spawnUpgradeTime)
         {
-            Instantiate(upgradePrefab);
-            Instantiate(pollutionPrefab);
+            Instantiate(upgradePrefab, upgradePoint.position, Quaternion.identity);
+            Instantiate(pollutionPrefab, pollutionPoint.position, Quaternion.identity);
 
             spawnUpgradeTimer = 0;
         }

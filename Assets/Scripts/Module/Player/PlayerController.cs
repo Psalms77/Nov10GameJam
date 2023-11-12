@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class PlayerController : Observer
 {
     public RaycastHit2D[] groundcheck;
     public float absVelo;
     public float speedLimit = 5.5f;
+    public float maxHp = 100f;
     public float hp = 100f;
     public float dmg = 10f;
     public float flybackTime = 0.5f;
@@ -38,7 +40,7 @@ public class PlayerController : Observer
     public AudioClip hitEnemy;
     public AudioClip shoot;
 
-
+    public Slider hpbar;
 
 
     private void Awake()
@@ -62,6 +64,7 @@ public class PlayerController : Observer
         _sr = GetComponent<SpriteRenderer>();
         _ps = transform.GetChild(0).GetComponent<ParticleSystem>();
         shootingPoint = GameObject.Find("shootingPoint").transform;
+        hpbar.maxValue = maxHp;
     }
 
     // Update is called once per frame
@@ -74,6 +77,7 @@ public class PlayerController : Observer
         GroucndCheckRaycast();
         AnimatorControl();
         DamageCoolDown();
+        hpbar.value = maxHp - hp;
         stateMachine.currentState.HandleUpdate();
     }
 
