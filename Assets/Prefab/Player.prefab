@@ -5007,6 +5007,7 @@ MonoBehaviour:
   isgrounded: 0
   sfxSource: {fileID: 0}
   jetpack: {fileID: 8300000, guid: a811fde7f8294e34182ce8c97ff6d2bf, type: 3}
+  upgradesfx: {fileID: 8300000, guid: b9a46913aaa87e1459fb1786f44162ed, type: 3}
   hitEnemy:
   - {fileID: 8300000, guid: 5a9fbbfebbf391a4fa5bf7ee387f5c93, type: 3}
   - {fileID: 8300000, guid: 232a7344e45e5fc498d47ad4a871ed72, type: 3}

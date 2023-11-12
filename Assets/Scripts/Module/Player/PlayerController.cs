@@ -37,6 +37,7 @@ public class PlayerController : Observer
 
     public AudioSource sfxSource;
     public AudioClip jetpack;
+    public AudioClip upgradesfx;
     public AudioClip[] hitEnemy;
     public AudioClip[] shoot;
 
@@ -224,8 +225,10 @@ public class PlayerController : Observer
     }
     public void TakeUpgrade(float upgrade)
     {
+        sfxSource.PlayOneShot(upgradesfx);
         dmg += upgrade;
         hp += upgrade;
+
     }
 
 
