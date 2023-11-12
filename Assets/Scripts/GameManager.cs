@@ -21,6 +21,8 @@ public class GameManager : Singleton<GameManager>
     public float minZoom = 10f;
     public float maxZoom = 80f;
     public int headcount = 0;
+    public GameObject tutorialPanel;
+    public GameObject winPanel;
 
     protected override void Awake()
     {
@@ -31,6 +33,11 @@ public class GameManager : Singleton<GameManager>
         Application.targetFrameRate = 120;
         cam = Camera.main;
         planet = GameObject.Find("Planet");
+
+        AddEventListener(EventName.EnemyDies, (object[] arg) =>
+        {
+            HeadCount();
+        });
     }
 
     // Start is called before the first frame update
@@ -39,6 +46,9 @@ public class GameManager : Singleton<GameManager>
         bgmSource = GetComponent<AudioSource>();
         bgmSource.loop = true;
         bgmSource.Play();
+        tutorialPanel.SetActive(true);
+
+        Destroy(tutorialPanel, 30f);
     }
 
     // Update is called once per frame
@@ -53,7 +63,10 @@ public class GameManager : Singleton<GameManager>
 
         ZoomMap();
 
-
+        if (headcount>20)
+        {
+            winPanel.SetActive(true);
+        }
 
 
     }
@@ -79,11 +92,8 @@ public class GameManager : Singleton<GameManager>
 
     public void HeadCount()
     {
-        
+        headcount += 1;
     }
-
-
-
 
     public void ZoomMap()
     {
