@@ -10,4 +10,9 @@ public class SceneJump : MonoBehaviour
     {
         SceneManager.LoadScene(scenename);
     }
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
 }

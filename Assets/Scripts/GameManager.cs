@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         
         //DontDestroyOnLoad(GameObject.Find("Camera"));
         Application.targetFrameRate = 120;

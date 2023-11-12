@@ -190,8 +190,8 @@ public class PlayerController : Observer
                 }
             }
 
-            laserLineRenderer.SetColors(new Color(255, 255, 0, 0.5f), end: new Color(255, 255, 0, 0.5f));
-            laserLineRenderer.SetWidth(0.2f, 0.2f);
+            laserLineRenderer.SetColors(new Color(255, 255, 0, 1f), end: new Color(255, 255, 0, 1f));
+            laserLineRenderer.SetWidth(0.3f, 0.3f);
             DrawLaser(shootingPoint.position, (GameManager.instance.mousePos));
 
 
@@ -257,7 +257,7 @@ public class PlayerController : Observer
 
     public void LosePanel()
     {
-
+        losepanel.SetActive(true);
     }
 
 

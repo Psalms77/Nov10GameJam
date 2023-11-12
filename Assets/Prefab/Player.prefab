@@ -5007,8 +5007,14 @@ MonoBehaviour:
   isgrounded: 0
   sfxSource: {fileID: 0}
   jetpack: {fileID: 8300000, guid: a811fde7f8294e34182ce8c97ff6d2bf, type: 3}
-  hitEnemy: {fileID: 8300000, guid: 5a9fbbfebbf391a4fa5bf7ee387f5c93, type: 3}
-  shoot: {fileID: 8300000, guid: 4c806fc9cbb95b34490c868f26fcb4b7, type: 3}
+  hitEnemy:
+  - {fileID: 8300000, guid: 5a9fbbfebbf391a4fa5bf7ee387f5c93, type: 3}
+  - {fileID: 8300000, guid: 232a7344e45e5fc498d47ad4a871ed72, type: 3}
+  - {fileID: 8300000, guid: ef4149d09588ebb4f9a2a33f1024c00f, type: 3}
+  shoot:
+  - {fileID: 8300000, guid: 4c806fc9cbb95b34490c868f26fcb4b7, type: 3}
+  - {fileID: 8300000, guid: df9800d35603e814aabb4da76a716352, type: 3}
+  - {fileID: 8300000, guid: 4786af9339ba9cd4a9a346a6132ad269, type: 3}
   hpbar: {fileID: 0}
   losepanel: {fileID: 0}
 --- !u!120 &8610083189894258221
