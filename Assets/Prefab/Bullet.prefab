@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paodanSpeed: 10
   bulletSpeed: 200
-  lifeTime: 2
+  lifeTime: 1.5
   isPao: 0
   attack: 10
 --- !u!95 &783154979452924298

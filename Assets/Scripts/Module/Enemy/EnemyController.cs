@@ -32,7 +32,7 @@ public class EnemyController : Observer
         });
         AddEventListener(EventName.EnemyTakesDmg, (object[] arg) =>
         {
-            TakeDamage((float)arg[0]);
+            TakeDamage((float)arg[0], (GameObject)arg[1]);
         });
         count = 0;
     }
@@ -40,9 +40,7 @@ public class EnemyController : Observer
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-      
-
-      
+          
     }
     // Update is called once per frame
     void Update()
@@ -58,6 +56,7 @@ public class EnemyController : Observer
             timer = 0f;
         }
         }
+
         if (timer >= frozenTime)
         {
 
@@ -110,9 +109,11 @@ public class EnemyController : Observer
         }
         
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, GameObject gameObject)
     {
-        
+
+        if (this.gameObject == gameObject)
+        { 
         hp-=damage;
 
         Vector3 originalPosition = transform.position;
@@ -120,8 +121,8 @@ public class EnemyController : Observer
         // 使用DOTween创建一个抖动效果
         transform.DOShakePosition(shakeDuration, shakeStrength)
                 .OnComplete(() => transform.position = originalPosition);
-        
 
+        }
     }
 
     void OnDrawGizmosSelected()
