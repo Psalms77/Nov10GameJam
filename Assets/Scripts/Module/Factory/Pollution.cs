@@ -57,7 +57,7 @@ public class Pollution : Observer
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Enemy")) {
-            EventManager.SendNotification(EventName.EnemyTakePollution, 10f, 1f);
+            EventManager.SendNotification(EventName.EnemyTakePollution, 10f, 1f, collision.gameObject);
             DOTween.Kill(this.transform);
             Destroy(gameObject);
         }
