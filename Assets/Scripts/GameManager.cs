@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     public Camera cam;
     public GameObject planet;
     // mouse pointing
-    public Vector2 mousePos;
+    public Vector3 mousePos;
     public Vector2 gravity;
     protected override void Awake()
     {
@@ -54,13 +54,14 @@ public class GameManager : Singleton<GameManager>
     // call every frame
     public Vector2 GetGravity(Vector3 objectPosition)
     {
-        gravity = -planet.transform.position + objectPosition;
-        return gravity;
+
+        Vector3 grav = -planet.transform.position + objectPosition;
+        return grav;
     }
     // call every frame
     public void SetFacingOnPlant(GameObject go)
     {
-        go.transform.up = gravity;
+        go.transform.up = GetGravity(go.transform.position);
     }
 
     public void ZoomMap()
