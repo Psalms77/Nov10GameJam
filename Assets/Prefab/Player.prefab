@@ -4894,7 +4894,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.6, y: 24.8, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3216321459529683088}
@@ -4939,8 +4939,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -13721215
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -6318248233922354122, guid: 833ae2a59c4c2b64ea78d97981177576, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4994,6 +4994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   absVelo: 0
   speedLimit: 5.5
+  maxHp: 100
   hp: 100
   dmg: 10
   flybackTime: 0.5
@@ -5008,6 +5009,8 @@ MonoBehaviour:
   jetpack: {fileID: 8300000, guid: a811fde7f8294e34182ce8c97ff6d2bf, type: 3}
   hitEnemy: {fileID: 8300000, guid: 5a9fbbfebbf391a4fa5bf7ee387f5c93, type: 3}
   shoot: {fileID: 8300000, guid: 4c806fc9cbb95b34490c868f26fcb4b7, type: 3}
+  hpbar: {fileID: 0}
+  losepanel: {fileID: 0}
 --- !u!120 &8610083189894258221
 LineRenderer:
   serializedVersion: 2
@@ -5346,9 +5349,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -13721215
+  m_SortingLayer: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8904873509945086159, guid: a1df3679d85d768498e3836955f8223c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
