@@ -487,8 +487,12 @@ MonoBehaviour:
   planet: {fileID: 0}
   mousePos: {x: 0, y: 0, z: 0}
   gravity: {x: 0, y: 0}
+  vcam: {fileID: 1119866596}
   bgm: {fileID: 0}
   bgmSource: {fileID: 0}
+  zoomSpeed: 2
+  minZoom: 5
+  maxZoom: 20
 --- !u!4 &536798853
 Transform:
   m_ObjectHideFlags: 0
@@ -784,6 +788,8 @@ MonoBehaviour:
   attackRange: 5
   checkPlayer: {fileID: 0}
   frozenTime: 2
+  shakeDuration: 0.5
+  shakeStrength: 0.2
 --- !u!1 &742390148
 GameObject:
   m_ObjectHideFlags: 3
@@ -1698,26 +1704,6 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 1963269606}
-    - target: {fileID: 3216321459529683088, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.101
-      objectReference: {fileID: 0}
-    - target: {fileID: 3578548622254316385, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3578548622254316385, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3578548622254316385, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: UVModule.sprites.Array.data[0].sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 96af977218a55ae458ce582f951e56e5, type: 3}
-    - target: {fileID: 4119255587521153437, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 4848850795899932178, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
       propertyPath: m_Name
       value: Player
