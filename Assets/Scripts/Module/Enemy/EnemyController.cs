@@ -102,7 +102,7 @@ public class EnemyController : Observer
     public void TakePollution(float dmg,float dmg2,GameObject gameObject)
     {
 
-        if (count <= 5)
+        if (count <= 10)
         {
 
             if (this.gameObject == gameObject)
@@ -142,6 +142,7 @@ public class EnemyController : Observer
     {
             hp = 40;
          attack = 10;
+        count = 0;
 
 
 }

@@ -77,12 +77,12 @@ public class EnemyPool : MonoBehaviour
         systemTime += Time.deltaTime;
         if (CreatTime <= 0 && systemTime<=30)    
         {
-            CreatTime = Random.Range(8, 10);
+            CreatTime = Random.Range(6, 9);
             Spawn();
         }
         if (CreatTime <= 0 && systemTime <= 60&& systemTime>30)
         {
-            CreatTime = Random.Range(4, 9);
+            CreatTime = Random.Range(4, 8);
             Spawn();
         }
         if (CreatTime <= 0 && systemTime <= 120 && systemTime > 60)
