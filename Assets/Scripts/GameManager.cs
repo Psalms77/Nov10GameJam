@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     public float zoomSpeed = 2f;
     public float minZoom = 10f;
     public float maxZoom = 80f;
+    public int headcount = 0;
 
     protected override void Awake()
     {
@@ -53,6 +54,8 @@ public class GameManager : Singleton<GameManager>
         ZoomMap();
 
 
+
+
     }
 
     public GameObject GetPlayer()
@@ -72,6 +75,15 @@ public class GameManager : Singleton<GameManager>
     {
         go.transform.up = GetGravity(go.transform.position);
     }
+
+
+    public void HeadCount()
+    {
+        
+    }
+
+
+
 
     public void ZoomMap()
     {
