@@ -23,7 +23,8 @@ public class GameManager : Singleton<GameManager>
     public int headcount = 0;
     public GameObject tutorialPanel;
     public GameObject winPanel;
-
+    public GameObject losepanel;
+    public int pollutioncount = 0;
     protected override void Awake()
     {
         base.Awake();
@@ -37,6 +38,14 @@ public class GameManager : Singleton<GameManager>
         AddEventListener(EventName.EnemyDies, (object[] arg) =>
         {
             HeadCount();
+        });
+        AddEventListener(EventName.PollutionSpawn, (object[] arg) =>
+        {
+            pollutioncount += 1;
+        });
+        AddEventListener(EventName.EnemyTakePollution, (object[] arg) =>
+        {
+            pollutioncount -= 1;
         });
     }
 
@@ -66,6 +75,11 @@ public class GameManager : Singleton<GameManager>
         if (headcount>20)
         {
             winPanel.SetActive(true);
+        }
+
+        if (pollutioncount > 40)
+        {
+            losepanel.SetActive(true);
         }
 
 

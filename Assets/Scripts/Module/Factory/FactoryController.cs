@@ -40,6 +40,7 @@ public class FactoryController : Observer
         else if (spawnUpgradeTimer >= spawnUpgradeTime)
         {
             Instantiate(upgradePrefab, upgradePoint.position, Quaternion.identity);
+            EventManager.SendNotification(EventName.PollutionSpawn);
             Instantiate(pollutionPrefab, pollutionPoint.position, Quaternion.identity);
 
             spawnUpgradeTimer = 0;

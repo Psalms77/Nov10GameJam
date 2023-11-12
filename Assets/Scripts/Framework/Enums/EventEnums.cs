@@ -8,5 +8,6 @@ public enum EventName
     PlayerTakeUpgrade,      // param1: float, increased damage value; 
     EnemyTakePollution,     // param1: float, increased damage value; param2: float, increased spawn speed; param3: gameobject, the enemy hits
     EnemyDies,              // no param.
+    PollutionSpawn,         // no param.
 }
 

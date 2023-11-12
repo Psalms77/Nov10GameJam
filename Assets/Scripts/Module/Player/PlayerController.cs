@@ -225,6 +225,7 @@ public class PlayerController : Observer
     public void TakeUpgrade(float upgrade)
     {
         dmg += upgrade;
+        hp += upgrade;
     }
 
 
