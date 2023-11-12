@@ -13,6 +13,10 @@ public class GameManager : Singleton<GameManager>
     // mouse pointing
     public Vector3 mousePos;
     public Vector2 gravity;
+
+    public AudioClip bgm;
+    public AudioSource bgmSource;
+
     protected override void Awake()
     {
         base.Awake();
@@ -27,7 +31,9 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        bgmSource = GetComponent<AudioSource>();
+        bgmSource.loop = true;
+        bgmSource.Play();
     }
 
     // Update is called once per frame

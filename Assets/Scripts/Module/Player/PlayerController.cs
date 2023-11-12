@@ -32,6 +32,15 @@ public class PlayerController : Observer
     private bool canDealDamage = true;
 
     public bool isgrounded = false;
+
+    public AudioSource sfxSource;
+    public AudioClip jetpack;
+    public AudioClip hitEnemy;
+    public AudioClip shoot;
+
+
+
+
     private void Awake()
     {
         stateMachine = new PlayerFSM(this);
@@ -49,6 +58,7 @@ public class PlayerController : Observer
         rb = GetComponent<Rigidbody2D>();
         laserLineRenderer = GetComponent<LineRenderer>();
         _anim = GetComponent<Animator>();
+        sfxSource = GetComponent<AudioSource>();
         _sr = GetComponent<SpriteRenderer>();
         _ps = transform.GetChild(0).GetComponent<ParticleSystem>();
         shootingPoint = GameObject.Find("shootingPoint").transform;
@@ -69,6 +79,7 @@ public class PlayerController : Observer
 
     public void DamageCoolDown()
     {
+
         if (damageCooldownTimer<damageCoolDown)
         {
             damageCooldownTimer += Time.deltaTime;
@@ -118,11 +129,23 @@ public class PlayerController : Observer
 
     public void JumpOnPlanet()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            sfxSource.PlayOneShot(jetpack);
+        }
+
+
         if (Input.GetKey(KeyCode.Space))
         {
             //Debug.Log("jumped");
+            _ps.Play();
             rb.velocity += gravity.normalized * jumpParam * Time.deltaTime;
         }
+        if (!Input.GetKey(KeyCode.Space))
+        {
+            _ps.Pause();
+        }
+
 
 
     }
@@ -130,6 +153,8 @@ public class PlayerController : Observer
 
     public void ShootingLaser()
     {
+        if (Input.GetMouseButtonDown(0)) { sfxSource.PlayOneShot(shoot); }
+
         if (Input.GetMouseButton(0))
         {
 
@@ -141,6 +166,7 @@ public class PlayerController : Observer
                     Debug.Log("hit");
                     if (canDealDamage)
                     {
+                        sfxSource.PlayOneShot(hitEnemy);
                         EventManager.SendNotification(EventName.EnemyTakesDmg, dmg);
                     }
                 }
@@ -207,6 +233,8 @@ public class PlayerController : Observer
         if (!isgrounded) { _anim.SetBool("isGrounded", false); _anim.SetBool("isInAir", true); }
 
     }
+
+
 
 
 
