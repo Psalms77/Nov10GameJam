@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3491484964657468957}
   - component: {fileID: 1976970842565998208}
   - component: {fileID: 5540703316417084892}
+  - component: {fileID: 783154979452924298}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -123,7 +124,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.48979592, y: -0.3}
-    oldSize: {x: 0.49, y: 0.2}
+    oldSize: {x: 1.6333333, y: 0.6666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -185,3 +186,24 @@ MonoBehaviour:
   lifeTime: 2
   isPao: 0
   attack: 10
+--- !u!95 &783154979452924298
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5679956863179113424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e4438b2526ac7c42af76d188ed96907, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

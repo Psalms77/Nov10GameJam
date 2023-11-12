@@ -106,6 +106,7 @@ public class EnemyController : Observer
     }
     public void TakeDamage(float damage)
     {
+        
         hp-=damage;
     }
 
