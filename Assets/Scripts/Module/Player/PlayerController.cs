@@ -29,7 +29,7 @@ public class PlayerController : Observer
         stateMachine = new PlayerFSM(this);
         AddEventListener(EventName.PlayerTakesDmg, (object[] arg) =>
         {
-            //TakeDamage((float)arg[0], (GameObject)arg[1]);
+            TakeDamage((float)arg[0], (GameObject)arg[1]);
         });
 
     }
@@ -50,8 +50,6 @@ public class PlayerController : Observer
     void Update()
     {
         gravity = -planet.transform.position + this.gameObject.transform.position;
-        //Debug.Log(GameManager.instance.mousePos);     
-        //ShootingLaser();
         transform.up = gravity;
         stateMachine.currentState.HandleUpdate();
     }
