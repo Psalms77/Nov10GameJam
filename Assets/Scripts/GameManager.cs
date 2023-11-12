@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -24,6 +25,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject tutorialPanel;
     public GameObject winPanel;
     public GameObject losepanel;
+    public Text killnum;
     public int pollutioncount = 0;
     protected override void Awake()
     {
@@ -37,7 +39,8 @@ public class GameManager : Singleton<GameManager>
 
         AddEventListener(EventName.EnemyDies, (object[] arg) =>
         {
-            HeadCount();
+            headcount += 1;
+            Debug.Log(headcount);
         });
         AddEventListener(EventName.PollutionSpawn, (object[] arg) =>
         {
@@ -71,6 +74,7 @@ public class GameManager : Singleton<GameManager>
 
 
         ZoomMap();
+        killnum.text = headcount.ToString();
 
         if (headcount>20)
         {

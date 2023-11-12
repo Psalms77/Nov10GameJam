@@ -70,6 +70,7 @@ public class EnemyController : Observer
         if (hp <= 0.0f)
         {
             pool.Release(gameObject);
+            EventManager.SendNotification(EventName.EnemyDies);
         }
 
 
@@ -86,7 +87,7 @@ public class EnemyController : Observer
     {
        
             pool.Release(gameObject);
-        EventManager.SendNotification(EventName.EnemyDies);
+
 
     }
 
