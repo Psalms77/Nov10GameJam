@@ -176,7 +176,7 @@ public class PlayerController : Observer
         if (Input.GetMouseButton(0))
         {
 
-            hits = Physics2D.RaycastAll(shootingPoint.position, (GameManager.instance.mousePos - shootingPoint.position));
+            hits = Physics2D.RaycastAll(shootingPoint.position, (GameManager.instance.mousePos - shootingPoint.position), (GameManager.instance.mousePos - shootingPoint.position).magnitude);
             for (int i = 0; i < hits.Length; i++)
             {
                 if (hits[i].transform.CompareTag("Enemy"))
