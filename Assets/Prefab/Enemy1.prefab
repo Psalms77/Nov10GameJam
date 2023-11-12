@@ -106,8 +106,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1097752399
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 777366848074108644, guid: 44dfd2b441ab83847b34c0d99fb2bad5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -216,6 +216,8 @@ MonoBehaviour:
   attackRange: 8
   checkPlayer: {fileID: 569587655697587498}
   frozenTime: 2
+  shakeDuration: 0.5
+  shakeStrength: 0.2
 --- !u!1 &8143897296567117814
 GameObject:
   m_ObjectHideFlags: 0
