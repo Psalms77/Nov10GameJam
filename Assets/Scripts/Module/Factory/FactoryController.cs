@@ -14,6 +14,8 @@ public class FactoryController : Observer
     private float spawnPollutionTimer;
     public float spawnPollutionTime;
 
+    public AudioSource pollutionSfx;
+    public AudioClip[] pollution;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,7 @@ public class FactoryController : Observer
         else if (spawnUpgradeTimer >= spawnUpgradeTime)
         {
             Instantiate(upgradePrefab, upgradePoint.position, Quaternion.identity);
+            pollutionSfx.PlayOneShot(pollution[Random.Range(0, 3)]);
             EventManager.SendNotification(EventName.PollutionSpawn);
             Instantiate(pollutionPrefab, pollutionPoint.position, Quaternion.identity);
 
