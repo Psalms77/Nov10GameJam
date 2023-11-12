@@ -556,7 +556,7 @@ BoxCollider2D:
   m_Offset: {x: 0.004999995, y: 0.29499996}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49122807, y: -0.056603774}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.57, y: 0.53}
     newSize: {x: 0.57, y: 0.53}
     adaptiveTilingThreshold: 0.5
@@ -681,6 +681,10 @@ MonoBehaviour:
   enemyType: 1
   scaleSpeed: 1
   maxScale: 15
+  count: 0
+  attackRange: 5
+  checkPlayer: {fileID: 0}
+  frozenTime: 2
 --- !u!1 &742390148
 GameObject:
   m_ObjectHideFlags: 3

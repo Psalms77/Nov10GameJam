@@ -4994,7 +4994,7 @@ MonoBehaviour:
   absVelo: 0
   speedLimit: 5.5
   hp: 100
-  dmg: 0
+  dmg: 10
   flybackTime: 0.5
   flybackMultiplier: 1
   planet: {fileID: 0}
@@ -5183,6 +5183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8540807243754892188}
   - component: {fileID: 571733360726048535}
+  - component: {fileID: 1596302311653101250}
   m_Layer: 0
   m_Name: Player_Arm
   m_TagString: Untagged
@@ -5258,3 +5259,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &1596302311653101250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6279820354924080015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f4ccccaf48cf4f898db89dbca6893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

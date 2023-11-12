@@ -26,7 +26,11 @@ public class PlayerController : Observer
 
     private RaycastHit2D[] hits;
     private Transform shootingPoint;
-    
+
+    private float damageCoolDown = 0.5f;
+    private float damageCooldownTimer;
+    private bool canDealDamage = true;
+
     public bool isgrounded = false;
     private void Awake()
     {
@@ -59,7 +63,24 @@ public class PlayerController : Observer
         transform.up = gravity;
         GroucndCheckRaycast();
         AnimatorControl();
+        DamageCoolDown();
         stateMachine.currentState.HandleUpdate();
+    }
+
+    public void DamageCoolDown()
+    {
+        if (damageCooldownTimer<damageCoolDown)
+        {
+            damageCooldownTimer += Time.deltaTime;
+            canDealDamage = false;
+        }
+        else
+        {
+            damageCooldownTimer = 0;
+            canDealDamage = true;
+        }
+
+
     }
 
 
@@ -99,7 +120,7 @@ public class PlayerController : Observer
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            Debug.Log("jumped");
+            //Debug.Log("jumped");
             rb.velocity += gravity.normalized * jumpParam * Time.deltaTime;
         }
 
@@ -117,7 +138,11 @@ public class PlayerController : Observer
             {
                 if (hits[i].transform.CompareTag("Enemy"))
                 {
-                    EventManager.SendNotification(EventName.EnemyTakesDmg, dmg);
+                    Debug.Log("hit");
+                    if (canDealDamage)
+                    {
+                        EventManager.SendNotification(EventName.EnemyTakesDmg, dmg);
+                    }
                 }
             }
 
