@@ -114,12 +114,14 @@ public class PlayerController : Observer
             _sr.flipX = false;
             if (absVelo >= speedLimit)
             {
-                rb.velocity += gravity.Perpendicular1().normalized * moveSpeed * Time.deltaTime;
-                rb.AddForce(gravity.Perpendicular2().normalized);
+                Vector2 temp = -Vector2.Perpendicular(gravity).normalized;
+                rb.velocity += temp * moveSpeed * Time.deltaTime;
+                rb.AddForce(-temp);
             }
             else
             {
-                rb.velocity += gravity.Perpendicular1().normalized * moveSpeed * Time.deltaTime;
+                Vector2 temp = -Vector2.Perpendicular(gravity).normalized;
+                rb.velocity += temp * moveSpeed * Time.deltaTime;
             }
 
 
@@ -128,14 +130,15 @@ public class PlayerController : Observer
         {
             _sr.flipX = true;
             if (absVelo >= speedLimit) {
-                rb.velocity += gravity.Perpendicular2().normalized * moveSpeed * Time.deltaTime;
-                rb.AddForce(gravity.Perpendicular1().normalized);
+                Vector2 temp = Vector2.Perpendicular(gravity).normalized;
+                rb.velocity += temp * moveSpeed * Time.deltaTime;
+                rb.AddForce(-temp);
             }
             else
             {
-                rb.velocity += gravity.Perpendicular2().normalized * moveSpeed * Time.deltaTime;
+                Vector2 temp = Vector2.Perpendicular(gravity).normalized;
+                rb.velocity += temp * moveSpeed * Time.deltaTime;
             }
-
         }
     }
 
