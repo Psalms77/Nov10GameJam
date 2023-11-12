@@ -121,7 +121,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Player_Arm
     originalName: 
-    pivot: {x: 0.51428574, y: -0.6428572}
+    pivot: {x: 0, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:

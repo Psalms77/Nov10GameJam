@@ -61,9 +61,6 @@ public class Planet : Observer
             }
             
         }
-
-        //Vector3 t = - player.transform.position + this.gameObject.transform.position;
-        //playerRb.AddForce(t.normalized * gravityScale);
     }
 
 
