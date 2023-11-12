@@ -68,7 +68,7 @@ public class EnemyController : Observer
             
         }
 
-        EnemyDie();
+
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -126,7 +126,7 @@ public class EnemyController : Observer
         // 使用DOTween创建一个抖动效果
         transform.DOShakePosition(shakeDuration, shakeStrength)
                 .OnComplete(() => transform.position = originalPosition);
-
+         EnemyDie();
         }
     }
 
