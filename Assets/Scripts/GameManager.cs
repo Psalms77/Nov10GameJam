@@ -25,7 +25,9 @@ public class GameManager : Singleton<GameManager>
     public GameObject tutorialPanel;
     public GameObject winPanel;
     public GameObject losepanel;
+
     public Text killnum;
+    public Text pollutionnum;
     public int pollutioncount = 0;
     protected override void Awake()
     {
@@ -75,8 +77,9 @@ public class GameManager : Singleton<GameManager>
 
         ZoomMap();
         killnum.text = headcount.ToString();
+        pollutionnum.text = pollutioncount.ToString();
 
-        if (headcount>20)
+        if (headcount > 40)
         {
             winPanel.SetActive(true);
         }
