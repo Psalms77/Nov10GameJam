@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &569587655697587498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501803289126463020}
+  m_Layer: 0
+  m_Name: checkBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1501803289126463020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569587655697587498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.343, y: 0.539, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2400098822607805834}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3445422338458194005
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2400098822607805834}
   - component: {fileID: 1760459699000688164}
-  - component: {fileID: 1204705958266467103}
+  - component: {fileID: 8577439839749362395}
   - component: {fileID: 3393463036130830847}
   - component: {fileID: 8751527846263049546}
   m_Layer: 0
@@ -34,6 +65,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5702413009728463358}
+  - {fileID: 1501803289126463020}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1760459699000688164
@@ -88,8 +120,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &1204705958266467103
-PolygonCollider2D:
+--- !u!61 &8577439839749362395
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,50 +152,19 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.004999995, y: 0.16500002}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5185185, y: -0.16}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.27, y: 0.25}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.089710854, y: 0.1994131}
-      - {x: 0.09084915, y: 0.24121873}
-      - {x: 0.04874687, y: 0.25554222}
-      - {x: 0.026668785, y: 0.25600603}
-      - {x: 0.017639019, y: 0.2959799}
-      - {x: -0.03315024, y: 0.2966646}
-      - {x: -0.041783217, y: 0.24301168}
-      - {x: -0.038422152, y: 0.21614817}
-      - {x: -0.06886381, y: 0.23246555}
-      - {x: -0.08690886, y: 0.21622448}
-      - {x: -0.09653067, y: 0.21213703}
-      - {x: -0.09608702, y: 0.17685147}
-      - {x: -0.107042834, y: 0.1764555}
-      - {x: -0.10922598, y: 0.17055874}
-      - {x: -0.109139, y: 0.12750721}
-      - {x: -0.12572072, y: 0.117855266}
-      - {x: -0.12684311, y: 0.0997589}
-      - {x: -0.13999991, y: 0.091547966}
-      - {x: -0.14, y: 0.04}
-      - {x: 0.08407616, y: 0.036439896}
-      - {x: 0.087401815, y: 0.045212556}
-      - {x: 0.087401435, y: 0.04521256}
-      - {x: 0.12354912, y: 0.045804027}
-      - {x: 0.12354874, y: 0.045804027}
-      - {x: 0.12340569, y: 0.062859535}
-      - {x: 0.13285148, y: 0.06518978}
-      - {x: 0.13691239, y: 0.10095234}
-      - {x: 0.12696405, y: 0.1180292}
-      - {x: 0.11827111, y: 0.123470105}
-      - {x: 0.106545866, y: 0.14108866}
-      - {x: 0.11183136, y: 0.20118032}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 0.27, y: 0.25}
+  m_EdgeRadius: 0
 --- !u!50 &3393463036130830847
 Rigidbody2D:
   serializedVersion: 4
@@ -209,8 +210,11 @@ MonoBehaviour:
   bulletPosition: {fileID: 8143897296567117814}
   fireRate: 0.5
   enemyType: 1
-  scaleSpeed: 1
+  scaleSpeed: 40
   maxScale: 15
+  count: 0
+  attackRange: 8
+  checkPlayer: {fileID: 569587655697587498}
 --- !u!1 &8143897296567117814
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +240,7 @@ Transform:
   m_GameObject: {fileID: 8143897296567117814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.008, y: 0.297, z: 0}
+  m_LocalPosition: {x: 0, y: 0.074, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

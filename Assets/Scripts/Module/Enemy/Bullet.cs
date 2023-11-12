@@ -11,12 +11,14 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     public bool isPao;
     public float attack =10;
+    private SpriteRenderer rbSprite;
     
     // Start is called before the first frame update
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rbSprite = rb.GetComponent<SpriteRenderer>();
         direction = (GameManager.instance.GetPlayer().transform.position - transform.position).normalized;
         if (isPao)
         {
@@ -28,7 +30,14 @@ public class Bullet : MonoBehaviour
     // Update is called once per framez
     void Update()
     {
-        
+        if (direction.x > 0) // 玩家面朝右
+        {
+            rbSprite.flipX = false; // 不翻转
+        }
+        else if (direction.x < 0) // 玩家面朝左
+        {
+            rbSprite.flipX = true; // 翻转
+        }
     }
 
     private void FixedUpdate()

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &238716838618534849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2678022352232978238}
+  m_Layer: 0
+  m_Name: checkBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2678022352232978238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238716838618534849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2400098822607805834}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3445422338458194005
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2400098822607805834}
   - component: {fileID: 1760459699000688164}
-  - component: {fileID: 1388176875711218476}
+  - component: {fileID: 3457154992345227559}
   - component: {fileID: 3393463036130830847}
   - component: {fileID: 8751527846263049546}
   m_Layer: 0
@@ -34,6 +65,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2347096856333857992}
+  - {fileID: 2678022352232978238}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1760459699000688164
@@ -88,7 +120,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &1388176875711218476
+--- !u!60 &3457154992345227559
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +155,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49180326, y: -0.15217392}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.61, y: 0.46}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -132,27 +164,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.22345263, y: 0.3283715}
-      - {x: 0.26, y: 0.42}
-      - {x: 0.191545, y: 0.44279638}
-      - {x: 0.15334937, y: 0.50805247}
-      - {x: 0.10438069, y: 0.536271}
-      - {x: 0, y: 0.53}
-      - {x: -0.01, y: 0.45999998}
-      - {x: -0.04, y: 0.53}
-      - {x: -0.13, y: 0.53}
-      - {x: -0.14028253, y: 0.4735047}
-      - {x: -0.18394497, y: 0.42640695}
-      - {x: -0.23311453, y: 0.39050224}
-      - {x: -0.29999998, y: 0.34}
-      - {x: -0.30783832, y: 0.22392206}
-      - {x: -0.29999998, y: 0.12}
-      - {x: -0.26, y: 0.089999996}
-      - {x: -0.22999999, y: 0.07}
-      - {x: 0.24, y: 0.07}
-      - {x: 0.31, y: 0.089999996}
-      - {x: 0.31, y: 0.26999998}
-      - {x: 0.27275565, y: 0.29902664}
+    - - {x: 0.22251518, y: 0.017401848}
+      - {x: 0.23946027, y: 0.07901874}
+      - {x: 0.255, y: 0.12}
+      - {x: 0.17761314, y: 0.15741165}
+      - {x: 0.17382915, y: 0.22999999}
+      - {x: -0.005, y: 0.22999999}
+      - {x: -0.015, y: 0.16}
+      - {x: -0.044999998, y: 0.22999999}
+      - {x: -0.13499999, y: 0.22999999}
+      - {x: -0.23051493, y: 0.06016208}
+      - {x: -0.30382678, y: 0.038826786}
+      - {x: -0.305, y: -0.17999999}
+      - {x: -0.265, y: -0.21}
+      - {x: -0.235, y: -0.22999999}
+      - {x: 0.235, y: -0.22999999}
+      - {x: 0.305, y: -0.21}
+      - {x: 0.3119683, y: -0.04672388}
+      - {x: 0.26834452, y: -0.04404791}
+      - {x: 0.27245706, y: 0.011393657}
   m_UseDelaunayMesh: 0
 --- !u!50 &3393463036130830847
 Rigidbody2D:
@@ -199,8 +229,11 @@ MonoBehaviour:
   bulletPosition: {fileID: 0}
   fireRate: 0.5
   enemyType: 2
-  scaleSpeed: 1
+  scaleSpeed: 40
   maxScale: 15
+  count: 0
+  attackRange: 5
+  checkPlayer: {fileID: 238716838618534849}
 --- !u!1 &3764931284237849479
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -15,9 +16,12 @@ public class EnemyPool : MonoBehaviour
     public int countAll;
     public int countActive;
     public int countInactive;
-
     private int randomIndex;
     private int randomPos;
+    float CreatTime = 5f;
+    float systemTime = 0f;
+
+
     private void Awake()
     {
         pool = new ObjectPool<GameObject>(createFunc, actionOnGet, actionOnRelease, actionOnDestroy, true, 10, 1000);
@@ -62,13 +66,36 @@ public class EnemyPool : MonoBehaviour
         countActive = pool.CountActive;
         countInactive = pool.CountInactive;
 
-        spawnTimer += Time.deltaTime;
+        //spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= spawnIntervals)
+        //if (spawnTimer >= spawnIntervals)
+        //{
+        //    spawnTimer -= spawnIntervals;
+        //    Spawn();
+        //}
+        CreatTime -= Time.deltaTime;
+        systemTime += Time.deltaTime;
+        if (CreatTime <= 0 && systemTime<=30)    
         {
-            spawnTimer -= spawnIntervals;
+            CreatTime = Random.Range(8, 10);
             Spawn();
         }
+        if (CreatTime <= 0 && systemTime <= 60&& systemTime>30)
+        {
+            CreatTime = Random.Range(4, 9);
+            Spawn();
+        }
+        if (CreatTime <= 0 && systemTime <= 120 && systemTime > 60)
+        {
+            CreatTime = Random.Range(3, 7);
+            Spawn();
+        }
+        if (CreatTime <= 0 && systemTime > 120)
+        {
+            CreatTime = Random.Range(1, 4);
+            Spawn();
+        }
+
 
 
     }
