@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class PlayerController : Observer
 {
     public float hp = 100f;
-    public float dmg;
+    public float dmg = 10f;
     public float flybackTime = 0.5f;
     public float flybackMultiplier = 1f;
     public PlayerFSM stateMachine;
@@ -18,14 +18,18 @@ public class PlayerController : Observer
     public float jumpParam = 1f;
     private Vector2 gravity;
     private SpriteRenderer _sr;
+    private ParticleSystem _ps;
+    private Animator _anim;
 
+    private RaycastHit2D[] hits;
+    private Transform shootingPoint;
 
     private void Awake()
     {
         stateMachine = new PlayerFSM(this);
         AddEventListener(EventName.PlayerTakesDmg, (object[] arg) =>
         {
-            TakeDamage((float)arg[0], (GameObject)arg[1]);
+            //TakeDamage((float)arg[0], (GameObject)arg[1]);
         });
 
     }
@@ -33,15 +37,20 @@ public class PlayerController : Observer
     // Start is called before the first frame update
     void Start()
     {
+        //init
         rb = GetComponent<Rigidbody2D>();
         laserLineRenderer = GetComponent<LineRenderer>();
+        _anim = GetComponent<Animator>();
+        _sr = GetComponent<SpriteRenderer>();
+        _ps = transform.GetChild(0).GetComponent<ParticleSystem>();
+        shootingPoint = GameObject.Find("shootingPoint").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
         gravity = -planet.transform.position + this.gameObject.transform.position;
-        //Debug.Log(GameManager.instance.mousePos);
+        //Debug.Log(GameManager.instance.mousePos);     
         //ShootingLaser();
         transform.up = gravity;
         stateMachine.currentState.HandleUpdate();
@@ -77,9 +86,20 @@ public class PlayerController : Observer
         if (Input.GetMouseButton(0))
         {
 
+            hits = Physics2D.RaycastAll(shootingPoint.position, (GameManager.instance.mousePos - shootingPoint.position));
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].transform.CompareTag("Enemy"))
+                {
+                    EventManager.SendNotification(EventName.EnemyTakesDmg, dmg);
+                }
+            }
+
             laserLineRenderer.SetColors(new Color(255, 255, 0, 0.5f), end: new Color(255, 255, 0, 0.5f));
             laserLineRenderer.SetWidth(0.2f, 0.2f);
             DrawLaser(this.gameObject.transform.position, (GameManager.instance.mousePos));
+
+
 
         }
 
