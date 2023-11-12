@@ -71,9 +71,7 @@ public class Planet : Observer
     {
 
     }
-
-
-
+    
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
