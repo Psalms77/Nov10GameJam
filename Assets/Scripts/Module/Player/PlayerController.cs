@@ -41,7 +41,7 @@ public class PlayerController : Observer
     public AudioClip shoot;
 
     public Slider hpbar;
-
+    public GameObject losepanel;
 
     private void Awake()
     {
@@ -82,6 +82,10 @@ public class PlayerController : Observer
         AnimatorControl();
         DamageCoolDown();
         hpbar.value = maxHp - hp;
+        if (hp < 0)
+        {
+            LosePanel();
+        }
         stateMachine.currentState.HandleUpdate();
     }
 
@@ -245,7 +249,10 @@ public class PlayerController : Observer
     }
 
 
+    public void LosePanel()
+    {
 
+    }
 
 
 
