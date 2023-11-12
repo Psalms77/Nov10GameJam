@@ -6,6 +6,9 @@ using Unity.VisualScripting;
 
 public class PlayerController : Observer
 {
+    public RaycastHit2D[] groundcheck;
+    public float absVelo;
+    public float speedLimit = 5.5f;
     public float hp = 100f;
     public float dmg = 10f;
     public float flybackTime = 0.5f;
@@ -23,7 +26,8 @@ public class PlayerController : Observer
 
     private RaycastHit2D[] hits;
     private Transform shootingPoint;
-
+    
+    public bool isgrounded = false;
     private void Awake()
     {
         stateMachine = new PlayerFSM(this);
@@ -49,21 +53,45 @@ public class PlayerController : Observer
     // Update is called once per frame
     void Update()
     {
+        absVelo = rb.velocity.magnitude;
+
         gravity = -planet.transform.position + this.gameObject.transform.position;
         transform.up = gravity;
+        GroucndCheckRaycast();
+        AnimatorControl();
         stateMachine.currentState.HandleUpdate();
     }
 
 
     public void MoveOnPlanet()
     {
-        
+
         if (Input.GetKey(KeyCode.D)) {
-            rb.velocity += gravity.Perpendicular1().normalized * moveSpeed * Time.deltaTime;
+            _sr.flipX = false;
+            if (absVelo >= speedLimit)
+            {
+                rb.velocity += gravity.Perpendicular1().normalized * moveSpeed * Time.deltaTime;
+                rb.AddForce(gravity.Perpendicular2().normalized);
+            }
+            else
+            {
+                rb.velocity += gravity.Perpendicular1().normalized * moveSpeed * Time.deltaTime;
+            }
+
+
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.velocity += gravity.Perpendicular2().normalized * moveSpeed * Time.deltaTime;
+            _sr.flipX = true;
+            if (absVelo >= speedLimit) {
+                rb.velocity += gravity.Perpendicular2().normalized * moveSpeed * Time.deltaTime;
+                rb.AddForce(gravity.Perpendicular1().normalized);
+            }
+            else
+            {
+                rb.velocity += gravity.Perpendicular2().normalized * moveSpeed * Time.deltaTime;
+            }
+
         }
     }
 
@@ -121,12 +149,50 @@ public class PlayerController : Observer
     {
         DOTween.Kill("flyback");
         hp = hp - dmg;
-        Vector3 flybackDir = - damageSource.transform.position + this.transform.position;
-        this.transform.DOMove(this.transform.position + flybackDir *flybackMultiplier, flybackTime).SetEase(Ease.OutCubic).SetId("flyback");
+        Vector3 flybackDir = -damageSource.transform.position + this.transform.position;
+        this.transform.DOMove(this.transform.position + flybackDir * flybackMultiplier, flybackTime).SetEase(Ease.OutCubic).SetId("flyback");
 
 
 
 
     }
+
+
+    void GroucndCheckRaycast()
+    {
+        groundcheck = Physics2D.RaycastAll(this.gameObject.transform.position, -gravity.normalized, 2.5f);
+        for (int i = 0; i < groundcheck.Length; i++)
+        {
+            if (groundcheck[i].transform.CompareTag("Planet"))
+            {
+                isgrounded = true; break;
+            }
+            else
+            {
+                isgrounded = false;
+            }
+        }
+    }
+
+
+    void AnimatorControl()
+    {
+        _anim.SetFloat("absVelo", absVelo);
+        if (isgrounded) { _anim.SetBool("isGrounded", true);_anim.SetBool("isInAir", false); }
+        if (!isgrounded) { _anim.SetBool("isGrounded", false); _anim.SetBool("isInAir", true); }
+
+    }
+
+
+
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        //Gizmos.DrawLine(this.gameObject.transform.position, );
+    }
+
+#endif
 
 }

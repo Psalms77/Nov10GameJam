@@ -388,7 +388,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.1444855
+  orthographic size: 11
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -413,7 +413,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.029673, y: 11.912266, z: -11.1141615}
+  m_LocalPosition: {x: -23.299671, y: 12.182266, z: -11.1141615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1095502780}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 7.1444855
+    OrthographicSize: 11
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -889,7 +889,7 @@ Transform:
   m_GameObject: {fileID: 1119866595}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.029673, y: 11.912266, z: -11.1141615}
+  m_LocalPosition: {x: -23.299671, y: 12.182266, z: -11.1141615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 1963269610}
   m_Layer: 0
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1495,24 +1495,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 807672121812600450, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 807672121812600450, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 807672121812600450, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 807672121812600450, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.2
+      value: -4.47
       objectReference: {fileID: 0}
     - target: {fileID: 807672121812600450, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.1
+      value: 35.37
       objectReference: {fileID: 0}
     - target: {fileID: 807672121812600450, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1553,22 +1541,6 @@ PrefabInstance:
     - target: {fileID: 4848850795899932178, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7989578795960863949, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: m_Size.x
-      value: 0.26362953
-      objectReference: {fileID: 0}
-    - target: {fileID: 7989578795960863949, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: m_Size.y
-      value: 0.55817795
-      objectReference: {fileID: 0}
-    - target: {fileID: 7989578795960863949, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.06381874
-      objectReference: {fileID: 0}
-    - target: {fileID: 7989578795960863949, guid: 06f95306e00859e4bb08ab8c160ee8d2, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.30927598
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
