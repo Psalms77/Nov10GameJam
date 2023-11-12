@@ -44,3 +44,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3696110617
+    locked: 0
+  - name: Planet
+    uniqueID: 3073385685
+    locked: 0
+  - name: Factory
+    uniqueID: 1454994079
+    locked: 0
+  - name: Enemy
+    uniqueID: 3197214897
+    locked: 0
+  - name: Player
+    uniqueID: 4281246081
+    locked: 0
+  - name: Items and Projectile
+    uniqueID: 2942767955
+    locked: 0

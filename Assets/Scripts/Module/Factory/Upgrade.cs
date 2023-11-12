@@ -46,7 +46,7 @@ public class Upgrade : Observer
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            EventManager.SendNotification(EventName.PlayerTakeUpgrade, 10f);
+            EventManager.SendNotification(EventName.PlayerTakeUpgrade, 1f);
             DOTween.Kill(this.transform);
             Destroy(gameObject);
         }

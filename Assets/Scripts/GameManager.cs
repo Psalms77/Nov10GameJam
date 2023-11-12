@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -13,9 +14,12 @@ public class GameManager : Singleton<GameManager>
     // mouse pointing
     public Vector3 mousePos;
     public Vector2 gravity;
-
+    public CinemachineVirtualCamera vcam;
     public AudioClip bgm;
     public AudioSource bgmSource;
+    public float zoomSpeed = 2f;
+    public float minZoom = 10f;
+    public float maxZoom = 80f;
 
     protected override void Awake()
     {
@@ -45,10 +49,9 @@ public class GameManager : Singleton<GameManager>
             EventManager.SendNotification(EventName.SwitchGameMode);
         }
 
-        if (Input.GetKey(KeyCode.M))
-        {
 
-        }
+        ZoomMap();
+
 
     }
 
@@ -73,9 +76,20 @@ public class GameManager : Singleton<GameManager>
     public void ZoomMap()
     {
 
+        // Get the mouse scroll wheel input
+        float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
 
+        // Adjust the orthographic size or field of view based on the scroll input
+        if (vcam.m_Lens.Orthographic)
+        {
+            vcam.m_Lens.OrthographicSize = Mathf.Clamp(vcam.m_Lens.OrthographicSize - scrollWheel * zoomSpeed, minZoom, maxZoom);
+        }
+        else
+        {
+            vcam.m_Lens.FieldOfView = Mathf.Clamp(vcam.m_Lens.FieldOfView - scrollWheel * zoomSpeed, minZoom, maxZoom);
+        }
+    
 
-
-    }
+}
 
 }

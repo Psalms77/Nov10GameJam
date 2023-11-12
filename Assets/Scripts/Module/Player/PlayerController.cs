@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class PlayerController : Observer
 {
     public RaycastHit2D[] groundcheck;
     public float absVelo;
     public float speedLimit = 5.5f;
+    public float maxHp = 100f;
     public float hp = 100f;
     public float dmg = 10f;
     public float flybackTime = 0.5f;
@@ -35,11 +37,11 @@ public class PlayerController : Observer
 
     public AudioSource sfxSource;
     public AudioClip jetpack;
-    public AudioClip hitEnemy;
-    public AudioClip shoot;
+    public AudioClip[] hitEnemy;
+    public AudioClip[] shoot;
 
-
-
+    public Slider hpbar;
+    public GameObject losepanel;
 
     private void Awake()
     {
@@ -47,6 +49,10 @@ public class PlayerController : Observer
         AddEventListener(EventName.PlayerTakesDmg, (object[] arg) =>
         {
             TakeDamage((float)arg[0], (GameObject)arg[1]);
+        });
+        AddEventListener(EventName.PlayerTakeUpgrade, (object[] arg) =>
+        {
+            TakeUpgrade((float)arg[0]);
         });
 
     }
@@ -62,6 +68,7 @@ public class PlayerController : Observer
         _sr = GetComponent<SpriteRenderer>();
         _ps = transform.GetChild(0).GetComponent<ParticleSystem>();
         shootingPoint = GameObject.Find("shootingPoint").transform;
+        hpbar.maxValue = maxHp;
     }
 
     // Update is called once per frame
@@ -74,6 +81,11 @@ public class PlayerController : Observer
         GroucndCheckRaycast();
         AnimatorControl();
         DamageCoolDown();
+        hpbar.value = maxHp - hp;
+        if (hp < 0)
+        {
+            LosePanel();
+        }
         stateMachine.currentState.HandleUpdate();
     }
 
@@ -102,12 +114,14 @@ public class PlayerController : Observer
             _sr.flipX = false;
             if (absVelo >= speedLimit)
             {
-                rb.velocity += gravity.Perpendicular1().normalized * moveSpeed * Time.deltaTime;
-                rb.AddForce(gravity.Perpendicular2().normalized);
+                Vector2 temp = -Vector2.Perpendicular(gravity).normalized;
+                rb.velocity += temp * moveSpeed * Time.deltaTime;
+                rb.AddForce(-temp);
             }
             else
             {
-                rb.velocity += gravity.Perpendicular1().normalized * moveSpeed * Time.deltaTime;
+                Vector2 temp = -Vector2.Perpendicular(gravity).normalized;
+                rb.velocity += temp * moveSpeed * Time.deltaTime;
             }
 
 
@@ -116,14 +130,15 @@ public class PlayerController : Observer
         {
             _sr.flipX = true;
             if (absVelo >= speedLimit) {
-                rb.velocity += gravity.Perpendicular2().normalized * moveSpeed * Time.deltaTime;
-                rb.AddForce(gravity.Perpendicular1().normalized);
+                Vector2 temp = Vector2.Perpendicular(gravity).normalized;
+                rb.velocity += temp * moveSpeed * Time.deltaTime;
+                rb.AddForce(-temp);
             }
             else
             {
-                rb.velocity += gravity.Perpendicular2().normalized * moveSpeed * Time.deltaTime;
+                Vector2 temp = Vector2.Perpendicular(gravity).normalized;
+                rb.velocity += temp * moveSpeed * Time.deltaTime;
             }
-
         }
     }
 
@@ -131,6 +146,7 @@ public class PlayerController : Observer
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+ 
             sfxSource.PlayOneShot(jetpack);
         }
 
@@ -153,7 +169,9 @@ public class PlayerController : Observer
 
     public void ShootingLaser()
     {
-        if (Input.GetMouseButtonDown(0)) { sfxSource.PlayOneShot(shoot); }
+        if (Input.GetMouseButtonDown(0)) {
+            //Debug.Log(shoot[Random.Range(0, 3)]);
+            sfxSource.PlayOneShot(shoot[Random.Range(0,3)]); }
 
         if (Input.GetMouseButton(0))
         {
@@ -166,8 +184,8 @@ public class PlayerController : Observer
                     Debug.Log("hit");
                     if (canDealDamage)
                     {
-                        sfxSource.PlayOneShot(hitEnemy);
-                        EventManager.SendNotification(EventName.EnemyTakesDmg, dmg);
+                        sfxSource.PlayOneShot(hitEnemy[Random.Range(0, 3)]);
+                        EventManager.SendNotification(EventName.EnemyTakesDmg, dmg, hits[i].transform.gameObject);
                     }
                 }
             }
@@ -203,10 +221,12 @@ public class PlayerController : Observer
         Vector3 flybackDir = -damageSource.transform.position + this.transform.position;
         this.transform.DOMove(this.transform.position + flybackDir * flybackMultiplier, flybackTime).SetEase(Ease.OutCubic).SetId("flyback");
 
-
-
-
     }
+    public void TakeUpgrade(float upgrade)
+    {
+        dmg += upgrade;
+    }
+
 
 
     void GroucndCheckRaycast()
@@ -235,7 +255,10 @@ public class PlayerController : Observer
     }
 
 
+    public void LosePanel()
+    {
 
+    }
 
 
 
