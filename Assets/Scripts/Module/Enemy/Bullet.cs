@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     private Vector3 direction;
     private Rigidbody2D rb;
     public bool isPao;
-    public int attack =10;
+    public float attack =10;
     
     // Start is called before the first frame update
 
