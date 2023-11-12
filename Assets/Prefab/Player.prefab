@@ -4939,8 +4939,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -13721215
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -6318248233922354122, guid: 833ae2a59c4c2b64ea78d97981177576, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4994,6 +4994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   absVelo: 0
   speedLimit: 5.5
+  maxHp: 100
   hp: 100
   dmg: 10
   flybackTime: 0.5
@@ -5006,8 +5007,16 @@ MonoBehaviour:
   isgrounded: 0
   sfxSource: {fileID: 0}
   jetpack: {fileID: 8300000, guid: a811fde7f8294e34182ce8c97ff6d2bf, type: 3}
-  hitEnemy: {fileID: 8300000, guid: 5a9fbbfebbf391a4fa5bf7ee387f5c93, type: 3}
-  shoot: {fileID: 8300000, guid: 4c806fc9cbb95b34490c868f26fcb4b7, type: 3}
+  hitEnemy:
+  - {fileID: 8300000, guid: 5a9fbbfebbf391a4fa5bf7ee387f5c93, type: 3}
+  - {fileID: 8300000, guid: 232a7344e45e5fc498d47ad4a871ed72, type: 3}
+  - {fileID: 8300000, guid: ef4149d09588ebb4f9a2a33f1024c00f, type: 3}
+  shoot:
+  - {fileID: 8300000, guid: 4c806fc9cbb95b34490c868f26fcb4b7, type: 3}
+  - {fileID: 8300000, guid: df9800d35603e814aabb4da76a716352, type: 3}
+  - {fileID: 8300000, guid: 4786af9339ba9cd4a9a346a6132ad269, type: 3}
+  hpbar: {fileID: 0}
+  losepanel: {fileID: 0}
 --- !u!120 &8610083189894258221
 LineRenderer:
   serializedVersion: 2
@@ -5346,9 +5355,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -13721215
+  m_SortingLayer: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8904873509945086159, guid: a1df3679d85d768498e3836955f8223c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -24,6 +24,8 @@ public class EnemyController : Observer
     Rigidbody2D rb;
     public float shakeDuration = 0.5f;
     public float shakeStrength = 0.2f;
+
+
     private void Awake()
     {
         AddEventListener(EventName.EnemyTakePollution, (object[] arg) =>

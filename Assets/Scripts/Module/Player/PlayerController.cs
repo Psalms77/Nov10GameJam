@@ -37,8 +37,8 @@ public class PlayerController : Observer
 
     public AudioSource sfxSource;
     public AudioClip jetpack;
-    public AudioClip hitEnemy;
-    public AudioClip shoot;
+    public AudioClip[] hitEnemy;
+    public AudioClip[] shoot;
 
     public Slider hpbar;
     public GameObject losepanel;
@@ -146,6 +146,7 @@ public class PlayerController : Observer
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+ 
             sfxSource.PlayOneShot(jetpack);
         }
 
@@ -168,7 +169,9 @@ public class PlayerController : Observer
 
     public void ShootingLaser()
     {
-        if (Input.GetMouseButtonDown(0)) { sfxSource.PlayOneShot(shoot); }
+        if (Input.GetMouseButtonDown(0)) {
+            //Debug.Log(shoot[Random.Range(0, 3)]);
+            sfxSource.PlayOneShot(shoot[Random.Range(0,3)]); }
 
         if (Input.GetMouseButton(0))
         {
@@ -181,7 +184,7 @@ public class PlayerController : Observer
                     Debug.Log("hit");
                     if (canDealDamage)
                     {
-                        sfxSource.PlayOneShot(hitEnemy);
+                        sfxSource.PlayOneShot(hitEnemy[Random.Range(0, 3)]);
                         EventManager.SendNotification(EventName.EnemyTakesDmg, dmg, hits[i].transform.gameObject);
                     }
                 }
