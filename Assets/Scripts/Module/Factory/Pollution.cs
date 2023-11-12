@@ -13,12 +13,17 @@ public class Pollution : Observer
     GameObject target;
     bool hasFindTarget = false;
     Rigidbody2D rb;
-    
+    SpriteRenderer _sr;
+    public Sprite[] pollutionSprites;
+
+
     // Start is called before the first frame update
     void Start()
     {
         hasFindTarget = false;
         rb = GetComponent<Rigidbody2D>();
+        _sr = rb.GetComponent<SpriteRenderer>();
+        _sr.sprite = pollutionSprites[Random.Range(0, 3)];
     }
 
     // Update is called once per frame

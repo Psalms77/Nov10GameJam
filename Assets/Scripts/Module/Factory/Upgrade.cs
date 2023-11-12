@@ -11,12 +11,15 @@ public class Upgrade : Observer
     GameObject target;
     bool hasFindTarget = false;
     Rigidbody2D rb;
-
+    SpriteRenderer _sr;
+    public Sprite[] upgradeSprites;
     // Start is called before the first frame update
     void Start()
     {
         hasFindTarget = false;
         rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
+        _sr.sprite = upgradeSprites[0];
     }
 
     // Update is called once per frame
@@ -46,7 +49,7 @@ public class Upgrade : Observer
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            EventManager.SendNotification(EventName.PlayerTakeUpgrade, 1f);
+            EventManager.SendNotification(EventName.PlayerTakeUpgrade, 5f);
             DOTween.Kill(this.transform);
             Destroy(gameObject);
         }
