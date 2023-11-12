@@ -24,6 +24,8 @@ public class EnemyController : Observer
     Rigidbody2D rb;
     public float shakeDuration = 0.5f;
     public float shakeStrength = 0.2f;
+    public AudioSource plantSfx;
+    public AudioClip[] plantGrow;
 
 
     private void Awake()
@@ -102,6 +104,7 @@ public class EnemyController : Observer
 
             if (this.gameObject == gameObject)
             {
+                plantSfx.PlayOneShot(plantGrow[Random.Range(0, 3)]);
                 attack += dmg;
                 fireRate += dmg2;
                 if (transform.localScale.magnitude < 15f)
