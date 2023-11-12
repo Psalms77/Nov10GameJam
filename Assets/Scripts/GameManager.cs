@@ -46,11 +46,11 @@ public class GameManager : Singleton<GameManager>
         });
         AddEventListener(EventName.PollutionSpawn, (object[] arg) =>
         {
-            pollutioncount += 1;
+            //pollutioncount += 1;
         });
         AddEventListener(EventName.EnemyTakePollution, (object[] arg) =>
         {
-            pollutioncount -= 1;
+            //pollutioncount = pollutioncount -1;
         });
     }
 
@@ -74,6 +74,8 @@ public class GameManager : Singleton<GameManager>
             EventManager.SendNotification(EventName.SwitchGameMode);
         }
 
+
+        pollutioncount = GameObject.FindGameObjectsWithTag("Pollution").Length;
 
         ZoomMap();
         killnum.text = headcount.ToString();
