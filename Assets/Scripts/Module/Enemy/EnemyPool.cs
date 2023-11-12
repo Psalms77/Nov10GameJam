@@ -6,23 +6,27 @@ using UnityEngine.Pool;
 
 public class EnemyPool : MonoBehaviour
 {
-    public GameObject plant;
+    public GameObject[] plant;
     public float spawnIntervals;
     private float spawnTimer;
-
+    public List<Vector3> spawnPositions = new List<Vector3>();
     private ObjectPool<GameObject> pool;
 
     public int countAll;
     public int countActive;
     public int countInactive;
+
+    private int randomIndex;
+    private int randomPos;
     private void Awake()
     {
         pool = new ObjectPool<GameObject>(createFunc, actionOnGet, actionOnRelease, actionOnDestroy, true, 10, 1000);
+        int randomIndex = Random.Range(0, plant.Length);
     }
 
     GameObject createFunc()
     {
-        var obj = Instantiate(plant, transform);
+        var obj = Instantiate(plant[randomIndex], transform);
         obj.GetComponent<EnemyController>().pool = pool;
         return obj;
 
@@ -35,27 +39,28 @@ public class EnemyPool : MonoBehaviour
     }
 
     void actionOnRelease(GameObject obj)
-    { 
+    {
         obj.gameObject.SetActive(false);
     }
 
     void actionOnDestroy(GameObject obj)
     {
-        Destroy(obj);   
+        Destroy(obj);
 
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        randomIndex = Random.Range(0, plant.Length);
         countAll = pool.CountAll;
-        countActive=pool.CountActive;
-        countInactive=pool.CountInactive;
+        countActive = pool.CountActive;
+        countInactive = pool.CountInactive;
 
         spawnTimer += Time.deltaTime;
 
@@ -63,8 +68,6 @@ public class EnemyPool : MonoBehaviour
         {
             spawnTimer -= spawnIntervals;
             Spawn();
-
-
         }
 
 
@@ -72,9 +75,9 @@ public class EnemyPool : MonoBehaviour
 
     private void Spawn()
     {
-       GameObject temp = pool.Get();
-
-
-        temp.transform.position = new Vector3(UnityEngine.Random.Range(20f, 22f), UnityEngine.Random.Range(20f,22f));
+        randomPos= UnityEngine.Random.Range(0, spawnPositions.Count);
+        Vector3 randomPosition = spawnPositions[randomPos];
+        GameObject temp = pool.Get();
+        temp.transform.position = spawnPositions[randomPos];
     }
 }

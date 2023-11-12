@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f37e0cc5b1be894d8e20b1db6c27a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plant: {fileID: 2555638877032016374, guid: 51a4e4535c665fd47ba379420c10876c, type: 3}
+  plant: {fileID: 3445422338458194005, guid: 7352c47b50196cd408c9a404f3060d58, type: 3}
   spawnIntervals: 1
   countAll: 0
   countActive: 0
