@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -21,6 +22,8 @@ public class EnemyController : Observer
     public GameObject checkPlayer;
     public float frozenTime = 2f;
     Rigidbody2D rb;
+    public float shakeDuration = 0.5f;
+    public float shakeStrength = 0.2f;
     private void Awake()
     {
         AddEventListener(EventName.EnemyTakePollution, (object[] arg) =>
@@ -37,6 +40,9 @@ public class EnemyController : Observer
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+      
+
+      
     }
     // Update is called once per frame
     void Update()
@@ -108,6 +114,14 @@ public class EnemyController : Observer
     {
         
         hp-=damage;
+
+        Vector3 originalPosition = transform.position;
+
+        // 使用DOTween创建一个抖动效果
+        transform.DOShakePosition(shakeDuration, shakeStrength)
+                .OnComplete(() => transform.position = originalPosition);
+        
+
     }
 
     void OnDrawGizmosSelected()
