@@ -30,8 +30,6 @@ public class PlayerController : Observer
 
     }
 
-
-
     // Start is called before the first frame update
     void Start()
     {

@@ -12,19 +12,21 @@ public class Pollution : Observer
     Collider2D[] cols;
     GameObject target;
     bool hasFindTarget = false;
+    Rigidbody2D rb;
     
     // Start is called before the first frame update
     void Start()
     {
         hasFindTarget = false;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!hasFindTarget) {        
+        if (!hasFindTarget) {
 
-
+            AntiGravity();
 
             cols = Physics2D.OverlapCircleAll(transform.position, detectRange);
             for (int i = 0; i < cols.Length; i++)
@@ -41,21 +43,24 @@ public class Pollution : Observer
         if (hasFindTarget && target != null) {
             transform.DOMove(target.transform.position, 2f).SetEase(Ease.OutCubic);
         }
-
-
-
-
     }
 
     private void AntiGravity()
     {
 
+        Vector2 antiGrav = -GameManager.instance.GetGravity(transform.position);
+        rb.AddForce(-antiGrav.normalized * 4f);
+
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.transform.CompareTag("Enemy")) {
+            EventManager.SendNotification(EventName.EnemyTakePollution, 10f, 1f);
+            DOTween.Kill(this.transform);
+            Destroy(gameObject);
+        }
     }
 
 
