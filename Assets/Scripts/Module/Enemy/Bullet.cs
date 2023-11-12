@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == ("Player"))
         {
             EventManager.SendNotification(EventName.PlayerTakesDmg,attack,this.gameObject);
+            Destroy(gameObject);
 
         }
     }
