@@ -8,7 +8,7 @@ public class EnemyController : Observer
 {
     public ObjectPool<GameObject> pool;
     public int hp = 40;
-    public int attack = 10;
+    public float attack = 10;
     public GameObject bulletPrefab;
     public GameObject bulletPosition;
     public float fireRate = 2f;
@@ -72,7 +72,7 @@ public class EnemyController : Observer
 
     public void TakePollution(float dmg,float dmg2)
     {
-        attack += (int)dmg;
+        attack += dmg;
         fireRate += dmg2;
         if (transform.localScale.magnitude < 15f)
         { transform.localScale += Vector3.one * scaleSpeed * Time.deltaTime; }
