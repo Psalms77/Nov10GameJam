@@ -17,14 +17,10 @@ public class PlayerArm : MonoBehaviour
         Vector2 mouse = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         if (mouse.x <= 960f) {
             //left
-
         }
         else if (mouse.x > 960f)
         {
             //right
-
-
-
         }
         //Debug.Log(mouse);
         PointingAim();
@@ -36,7 +32,7 @@ public class PlayerArm : MonoBehaviour
 
     void PointingAim()
     {
-        this.gameObject.transform.up = - this.gameObject.transform.position + GameManager.instance.mousePos;
+        this.gameObject.transform.right = - this.gameObject.transform.position + GameManager.instance.mousePos;
 
     }
 
