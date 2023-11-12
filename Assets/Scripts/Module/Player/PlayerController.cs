@@ -50,6 +50,10 @@ public class PlayerController : Observer
         {
             TakeDamage((float)arg[0], (GameObject)arg[1]);
         });
+        AddEventListener(EventName.PlayerTakeUpgrade, (object[] arg) =>
+        {
+            TakeUpgrade((float)arg[0]);
+        });
 
     }
 
@@ -207,10 +211,12 @@ public class PlayerController : Observer
         Vector3 flybackDir = -damageSource.transform.position + this.transform.position;
         this.transform.DOMove(this.transform.position + flybackDir * flybackMultiplier, flybackTime).SetEase(Ease.OutCubic).SetId("flyback");
 
-
-
-
     }
+    public void TakeUpgrade(float upgrade)
+    {
+        dmg += upgrade;
+    }
+
 
 
     void GroucndCheckRaycast()
