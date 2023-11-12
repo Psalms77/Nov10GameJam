@@ -175,7 +175,7 @@ public class PlayerController : Observer
                     if (canDealDamage)
                     {
                         sfxSource.PlayOneShot(hitEnemy);
-                        EventManager.SendNotification(EventName.EnemyTakesDmg, dmg);
+                        EventManager.SendNotification(EventName.EnemyTakesDmg, dmg, hits[i].transform.gameObject);
                     }
                 }
             }
