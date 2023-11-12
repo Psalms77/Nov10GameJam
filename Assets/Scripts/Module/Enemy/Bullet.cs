@@ -54,9 +54,12 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == ("Player"))
         {
             EventManager.SendNotification(EventName.PlayerTakesDmg, attack, this.gameObject);
-            bulletAni.SetTrigger("Explo");
+            bulletAni.SetTrigger("Exp");
             if (bulletAni.GetCurrentAnimatorStateInfo(0).normalizedTime>=0.99f)
-            { Destroy(gameObject); }
+            { 
+
+                Destroy(gameObject, 0.25f); 
+            }
           
             
 
