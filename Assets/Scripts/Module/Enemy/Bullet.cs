@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
     {
         if (!isPao)
         {
-            rb.velocity = direction * bulletSpeed * Time.deltaTime;
+            rb.velocity += (Vector2)direction * bulletSpeed * Time.deltaTime;
         }
     }
 
@@ -56,8 +56,7 @@ public class Bullet : MonoBehaviour
             EventManager.SendNotification(EventName.PlayerTakesDmg, attack, this.gameObject);
             bulletAni.SetTrigger("Exp");
             if (bulletAni.GetCurrentAnimatorStateInfo(0).normalizedTime>=0.99f)
-            { 
-
+            {
                 Destroy(gameObject, 0.25f); 
             }
           

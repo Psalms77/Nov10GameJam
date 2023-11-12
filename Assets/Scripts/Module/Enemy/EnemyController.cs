@@ -67,9 +67,13 @@ public class EnemyController : Observer
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
             
         }
+        if (hp <= 0.0f)
+        {
+            pool.Release(gameObject);
+        }
 
 
-    }
+        }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == ("Player"))
@@ -80,10 +84,9 @@ public class EnemyController : Observer
 
     void EnemyDie()
     {
-        if (hp <= 0)
-        {
+       
             pool.Release(gameObject);
-        }
+        EventManager.SendNotification(EventName.EnemyDies);
 
     }
 
@@ -126,7 +129,6 @@ public class EnemyController : Observer
         // 使用DOTween创建一个抖动效果
         transform.DOShakePosition(shakeDuration, shakeStrength)
                 .OnComplete(() => transform.position = originalPosition);
-         EnemyDie();
         }
     }
 
@@ -135,4 +137,12 @@ public class EnemyController : Observer
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(checkPlayer.transform.position, attackRange);
     }
+
+    public void ResetEnemy()
+    {
+            hp = 40;
+         attack = 10;
+
+
+}
 }

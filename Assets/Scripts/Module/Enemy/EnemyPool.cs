@@ -105,6 +105,8 @@ public class EnemyPool : MonoBehaviour
         randomPos= UnityEngine.Random.Range(0, spawnPositions.Count);
         Vector3 randomPosition = spawnPositions[randomPos];
         GameObject temp = pool.Get();
+        temp.GetComponent<EnemyController>().ResetEnemy();
         temp.transform.position = spawnPositions[randomPos];
+       
     }
 }

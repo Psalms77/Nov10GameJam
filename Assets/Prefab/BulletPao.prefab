@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a3de2e47f6c974db04736bf657543c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paodanSpeed: 10
+  paodanSpeed: 50
   bulletSpeed: 200
-  lifeTime: 1.5
+  lifeTime: 5
   isPao: 1
   attack: 10
 --- !u!95 &4532630296711647377
