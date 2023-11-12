@@ -227,6 +227,9 @@ MonoBehaviour:
   count: 0
   attackRange: 10
   checkPlayer: {fileID: 5633920174098906521}
+  frozenTime: 1
+  shakeDuration: 0.5
+  shakeStrength: 0.2
 --- !u!1 &5633920174098906521
 GameObject:
   m_ObjectHideFlags: 0
